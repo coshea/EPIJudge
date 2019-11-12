@@ -10,16 +10,16 @@ def can_form_palindrome_book(s):
 
 
 def can_form_palindrome_mine(s):
-    _dict: set = set()
+    _set: set = set()
     for c in s:
-        if c in _dict:
-            _dict.remove(c)
+        if c in _set:
+            _set.remove(c)
         else:
-            _dict.add(c)
+            _set.add(c)
 
-    if len(s) % 2 == 1 and len(_dict) == 1:
+    if len(s) % 2 == 1 and len(_set) == 1:
         return True
-    if len(s) % 2 == 0 and len(_dict) == 0:
+    if len(s) % 2 == 0 and len(_set) == 0:
         return True
     return False
 
