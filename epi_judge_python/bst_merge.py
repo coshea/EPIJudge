@@ -1,4 +1,5 @@
 from test_framework import generic_test
+from binary_tree_node import BinaryTreeNode
 
 
 def merge_two_bsts(A, B):

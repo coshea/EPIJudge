@@ -11,6 +11,8 @@ def can_form_palindrome_book(s):
 
 def can_form_palindrome_mine(s):
     _set: set = set()
+    _dict: dict = {}
+
     for c in s:
         if c in _set:
             _set.remove(c)

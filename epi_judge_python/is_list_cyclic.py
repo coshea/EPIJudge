@@ -3,10 +3,10 @@ import functools
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
+from list_node import ListNode
 
 
-def has_cycle(head):
-    # TODO - you fill in here.
+def has_cycle(head: ListNode):
     return None
 
 
