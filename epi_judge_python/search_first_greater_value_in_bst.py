@@ -1,9 +1,20 @@
 from test_framework import generic_test
+from binary_tree_node import BinaryTreeNode
 
 
-def find_first_greater_than_k(tree, k):
-    # TODO - you fill in here.
-    return None
+def find_first_greater_than_k(tree: BinaryTreeNode, k):
+    """
+    EPI 14.2
+    """
+    first_so_far = None
+    while tree:
+        if tree.data > k:
+            first_so_far = tree
+            tree = tree.left
+        else:
+            tree = tree.right
+
+    return first_so_far
 
 
 def find_first_greater_than_k_wrapper(tree, k):
