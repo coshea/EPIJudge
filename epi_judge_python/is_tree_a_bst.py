@@ -1,9 +1,19 @@
 from test_framework import generic_test
+from binary_tree_node import BinaryTreeNode
 
 
-def is_binary_tree_bst(tree, low_range=float('-inf'), high_range=float('inf')):
-    # TODO - you fill in here.
-    return True
+def is_binary_tree_bst(tree: BinaryTreeNode, low_range=float('-inf'), high_range=float('inf')):
+    """
+    EPI 14.1 Test if BST. Page 214
+    """
+    if not tree:
+        return True
+
+    if not low_range <= tree.data <= high_range:
+        return False
+
+    return (is_binary_tree_bst(tree.left, low_range, tree.data)
+            and is_binary_tree_bst(tree.right, tree.data, high_range))
 
 
 if __name__ == '__main__':
