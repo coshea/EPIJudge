@@ -1,23 +1,37 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+from collections import OrderedDict
+import typing
 
 
 class LruCache:
+    """
+    EPI 12.3 Implement an LRU Cache
+    Leetcode #146 https://leetcode.com/problems/lru-cache/
+    """
+
     def __init__(self, capacity):
-        # TODO - you fill in here.
-        return
+        self._capacity = capacity
+        self._ordered_table: OrderedDict[int, int] = OrderedDict()
 
-    def lookup(self, isbn):
-        # TODO - you fill in here.
-        return 0
+    def lookup(self, isbn) -> int:
+        if isbn not in self._ordered_table:
+            return -1
 
-    def insert(self, isbn, price):
-        # TODO - you fill in here.
-        return
+        price = self._ordered_table.pop(isbn)  # Get item, remove from dict
+        self._ordered_table[isbn] = price  # re-add item at back of queue
+        return price
 
-    def erase(self, isbn):
-        # TODO - you fill in here.
-        return True
+    def insert(self, isbn, price) -> None:
+        if isbn in self._ordered_table:
+            price = self._ordered_table.pop(isbn)  # Get item, remove from dict
+        elif len(self._ordered_table) == self._capacity:
+            self._ordered_table.popitem(False)
+
+        self._ordered_table[isbn] = price  # re-add item at back of queue
+
+    def erase(self, isbn) -> bool:
+        return self._ordered_table.pop(isbn, None) is not None
 
 
 def run_test(commands):
